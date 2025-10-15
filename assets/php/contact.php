@@ -1,34 +1,75 @@
-<?php 
+<?php
+// Import PHPMailer classes into the global namespace
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
- //contact form info
- $name=  $_POST['name'];
- $email=  $_POST['email'];
- $subject = $_POST['subject'];
- $contact_message = $_POST['message'];
+// Load Composer's autoloader (if you're using it) or load files manually
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
 
+// Set a default response for errors
+$response = ['success' => false, 'message' => 'An unknown error occurred.'];
 
- $message = "<b>Mail Sender Info:</b> </br>
-            <h5><b>Name:</b>".$name."</h5>
-            <h5><b>Email:</b>".$email."</h5>
-            </br>
-            <p>".$contact_message."</p>";
-            
-            
- $to = "contact@example.com"; //Replace your real receiving email address
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
- $header = "From:info@example.com \r\n"; //Replace with your real web master email
- $header .= "MIME-Version: 1.0\r\n";
- $header .= "Content-type: text/html\r\n";
- 
- $mail_send = mail ($to,$subject,$message,$header);
- 
-//  if( $mail_send == true ) {
-//     echo "Your message send successfully!.";
-//  }else {
-//     echo "Your message could not be send!.";
-//  }
+    // Sanitize user input
+    $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
+    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $subject = filter_var(trim($_POST['subject']), FILTER_SANITIZE_STRING);
+    $message = filter_var(trim($_POST['message']), FILTER_SANITIZE_STRING);
 
-echo "Your message send successfully!.";
+    // Validate input
+    if (empty($name) || empty($email) || empty($subject) || empty($message)) {
+        $response['message'] = 'Please fill in all the required fields.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $response['message'] = 'Please enter a valid email address.';
+    } else {
+        
+        $mail = new PHPMailer(true);
 
+        try {
+            // ===================================================================
+            // SMTP CONFIGURATION - GET THIS FROM YOUR HOSTING PROVIDER
+            // ===================================================================
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.gmail.com';        // Your SMTP server (e.g., smtp.gmail.com or your host's SMTP server)
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'ngonimabasa1964@gmail.com';         // Your SMTP username (your full email address)
+            $mail->Password   = 'hhkdzrbbqlrjjwxd';     // Your SMTP password (or app-specific password for Gmail)
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Use 'tls' or 'ssl' (PHPMailer::ENCRYPTION_STARTTLS)
+            $mail->Port       = 587;                       // Port for SSL is 465, for TLS is 587
+            // ===================================================================
 
+            // RECIPIENTS
+            $mail->setFrom('ngonimabasa1964@gmail.com', 'CallConnect Website'); // This can be the same as your Username
+            $mail->addAddress('ngonimabasa1964@gmail.com', 'Ngoni');      // Add the main recipient
+            $mail->addAddress('ngonimabasa1964@gmail.com');           // Add another recipient
+            $mail->addReplyTo($email, $name);                         // Set the reply-to address to the user who filled the form
+
+            // CONTENT
+            $mail->isHTML(false); // Set email format to plain text
+            $mail->Subject = 'New Website Contact: ' . $subject;
+            $mail->Body    = "You have received a new message from your website contact form.\n\n" .
+                           "Name: " . $name . "\n" .
+                           "Email: " . $email . "\n\n" .
+                           "Message:\n" . $message;
+
+            $mail->send();
+            $response['success'] = true;
+            $response['message'] = 'Your message has been sent successfully!';
+
+        } catch (Exception $e) {
+            // If PHPMailer fails, provide a detailed error for debugging
+            $response['message'] = "Oops! An error occurred and your message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+} else {
+    $response['message'] = 'Invalid request method.';
+}
+
+// Send the JSON response back to the JavaScript
+header('Content-Type: application/json');
+echo json_encode($response);
 ?>

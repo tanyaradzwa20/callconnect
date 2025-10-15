@@ -2,20 +2,16 @@
 <html lang="en">
 
 <head>
-    <!-- meta tags -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact Call Connect - Zimbabwe's leading call center solutions provider">
     <meta name="keywords" content="contact call center, customer support Zimbabwe, business solutions contact">
 
-    <!-- title -->
     <title>Contact Us - Call Connect</title>
 
-    <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/logo/logoo.png">
 
-    <!-- css -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/all-fontawesome.min.css">
     <link rel="stylesheet" href="assets/css/flaticon.css">
@@ -145,7 +141,21 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
+
+        /* Style for the success message */
+        .email-sent-success {
+            text-align: center;
+            padding: 40px;
+            border: 2px dashed #28a745;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+        }
         
+        .email-sent-success h2 {
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+
         @media (max-width: 768px) {
             .contact-wrapper {
                 padding: 30px 20px;
@@ -166,17 +176,12 @@
 
 <body class="home-3">
 
-    <!-- preloader -->
     <div class="preloader">
         <div class="loader-ripple">
             <div></div>
             <div></div>
         </div>
     </div>
-    <!-- preloader end -->
-
-
-    <!-- header area -->
     <header class="header">
         <div class="main-navigation">
             <nav class="navbar navbar-expand-lg">
@@ -213,10 +218,7 @@
             </nav>
         </div>
     </header>
-    <!-- header area end -->
-
     <main class="main">
-        <!-- breadcrumb -->
         <div class="site-breadcrumb">
             <div class="container">
                 <h2 class="breadcrumb-title">Contact Us</h2>
@@ -231,45 +233,44 @@
             <div class="hero-right-circles"></div>
         </div>
 
-        <!-- contact area -->
         <div class="contact-area py-120">
             <div class="container">
                 <div class="contact-wrapper">
                     <div class="row">
                         <div class="col-lg-8 align-self-center">
                             <div class="contact-form">
-                                <div class="contact-form-header">
-                                    <h2>Get In Touch</h2>
-                                    <p>We're here to help you elevate your customer experience. Reach out to us with any questions about our call center solutions, or to discuss how we can support your business growth.</p>
-                                </div>
-                                <form method="post" action="/ecall/assets/php/contact.php" id="contact-form">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="name"
-                                                    placeholder="Your Name" required>
+                                
+                                <div id="contact-form-wrapper">
+                                    <div class="contact-form-header">
+                                        <h2>Get In Touch</h2>
+                                        <p>We're here to help you elevate your customer experience. Reach out to us with any questions about our call center solutions, or to discuss how we can support your business growth.</p>
+                                    </div>
+                                    <form method="post" action="/callconnect/assets/php/contact.php" id="contact-form">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" name="email"
-                                                    placeholder="Your Email" required>
-                                            </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="subject" placeholder="Your Subject" required>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="subject"
-                                            placeholder="Your Subject" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea name="message" cols="30" rows="5" class="form-control"
-                                            placeholder="How can we help your business?"></textarea>
-                                    </div>
-                                    <button type="submit" class="theme-btn">Send Message <i class="far fa-paper-plane"></i></button>
-                                    <div class="col-md-12 mt-3">
-                                        <div class="form-messege text-success"></div>
-                                    </div>
-                                </form>
+                                        <div class="form-group">
+                                            <textarea name="message" cols="30" rows="5" class="form-control" placeholder="How can we help your business?" required></textarea>
+                                        </div>
+                                        <button type="submit" class="theme-btn">Send Message <i class="far fa-paper-plane"></i></button>
+                                        <div class="col-md-12 mt-3">
+                                            <div class="form-messege text-danger"></div>
+                                        </div>
+                                    </form>
+                                     </div>
+
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -331,11 +332,8 @@
                 </div>
             </div>
         </div>
-        <!-- end contact area -->
-        
-    </main>
+        </main>
 
-    <!-- footer area -->
     <footer class="footer-area">
         <div class="footer-widget">
             <div class="container">
@@ -398,18 +396,18 @@
                             <ul class="footer-contact">
                                 <li>
                                     <i class="far fa-phone"></i>
-                                        <div class="contact-info-content">
-                                            <h6>Phone</h6>
-                                            <a href="tel:+2638677184916">
-                                                <p>+263 8677 184916</p>
-                                            </a>
-                                            <a href="tel:+263 77 295 7563">
-                                                <p>+263 77 295 7563</p>
-                                            </a>
-                                            <a href="tel:+263 77 228 7484">
-                                                <p>+263 77 228 7484</p>
-                                            </a>
-                                        </div>
+                                    <div class="contact-info-content">
+                                        <h6>Phone</h6>
+                                        <a href="tel:+2638677184916">
+                                            <p>+263 8677 184916</p>
+                                        </a>
+                                        <a href="tel:+263 77 295 7563">
+                                            <p>+263 77 295 7563</p>
+                                        </a>
+                                        <a href="tel:+263 77 228 7484">
+                                            <p>+263 77 228 7484</p>
+                                        </a>
+                                    </div>
                                 </li>
                                 <li>
                                     <i class="far fa-map-marker-alt"></i>
@@ -451,13 +449,7 @@
             </div>
         </div>
     </footer>
-    <!-- footer area end -->
-
-    <!-- scroll-top -->
     <a href="#" id="scroll-top"><i class="far fa-arrow-up-to-line"></i></a>
-    <!-- scroll-top end -->
-
-    <!-- js -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/modernizr.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -472,6 +464,47 @@
     <script src="assets/js/contact-form.js"></script>
     <script src="assets/js/main.js"></script>
 
-</body>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const contactForm = document.getElementById('contact-form');
+        
+        if (contactForm) {
+            const formWrapper = document.getElementById('contact-form-wrapper');
+            const formMessage = contactForm.querySelector('.form-messege');
+    
+            contactForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+    
+                const formData = new FormData(contactForm);
+                // This line now dynamically gets the correct URL from your form's 'action' attribute
+                const actionUrl = contactForm.getAttribute('action'); 
+                
+                // Use the dynamically retrieved URL in the fetch request
+                fetch(actionUrl, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json()) 
+                .then(data => {
+                    if (data.success) {
+                        formWrapper.innerHTML = `
+                            <div class="email-sent-success">
+                                <h2>Email Sent!</h2>
+                                <p>Thank you for your message. We will get back to you shortly.</p>
+                            </div>
+                        `;
+                    } else {
+                        formMessage.innerHTML = 'Error: ' + data.message;
+                    }
+                })
+                .catch(error => {
+                    console.error('Submission Error:', error);
+                    formMessage.innerHTML = 'A network error occurred. Please try again later.';
+                });
+            });
+        }
+    });
+    </script>
+    </body>
 
 </html>
