@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // SMTP CONFIGURATION - GET THIS FROM YOUR HOSTING PROVIDER
             // ===================================================================
             $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com';        // Your SMTP server (e.g., smtp.gmail.com or your host's SMTP server)
+            $mail->Host       = 'smtp.gmail.com'; //mail.callconnect.co.zw        // Your SMTP server (e.g., smtp.gmail.com or your host's SMTP server)
             $mail->SMTPAuth   = true;
             $mail->Username   = 'ngonimabasa1964@gmail.com';         // Your SMTP username (your full email address)
             $mail->Password   = 'hhkdzrbbqlrjjwxd';     // Your SMTP password (or app-specific password for Gmail)
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // RECIPIENTS
             $mail->setFrom('ngonimabasa1964@gmail.com', 'CallConnect Website'); // This can be the same as your Username
             $mail->addAddress('ngonimabasa1964@gmail.com', 'Ngoni');      // Add the main recipient
-            $mail->addAddress('ngonimabasa1964@gmail.com');           // Add another recipient
+            $mail->addAddress('ngoni7596@gmail.com','Ngo');           // Add another recipient
             $mail->addReplyTo($email, $name);                         // Set the reply-to address to the user who filled the form
 
             // CONTENT

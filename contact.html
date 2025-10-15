@@ -141,6 +141,11 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
+        
+        .theme-btn:disabled {
+            background-color: #5a9cff;
+            cursor: not-allowed;
+        }
 
         /* Style for the success message */
         .email-sent-success {
@@ -269,7 +274,7 @@
                                             <div class="form-messege text-danger"></div>
                                         </div>
                                     </form>
-                                     </div>
+                                </div>
 
                             </div>
                         </div>
@@ -461,7 +466,7 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/counter-up.js"></script>
     <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/contact-form.js"></script>
+   <!-- <script src="assets/js/contact-form.js"></script> -->
     <script src="assets/js/main.js"></script>
 
     <script>
@@ -471,15 +476,20 @@
         if (contactForm) {
             const formWrapper = document.getElementById('contact-form-wrapper');
             const formMessage = contactForm.querySelector('.form-messege');
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            
+            // Save the original HTML of the entire form section
+            const originalFormWrapperHTML = formWrapper.innerHTML;
     
             contactForm.addEventListener('submit', function (event) {
                 event.preventDefault();
     
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+
                 const formData = new FormData(contactForm);
-                // This line now dynamically gets the correct URL from your form's 'action' attribute
                 const actionUrl = contactForm.getAttribute('action'); 
                 
-                // Use the dynamically retrieved URL in the fetch request
                 fetch(actionUrl, {
                     method: 'POST',
                     body: formData
@@ -487,19 +497,36 @@
                 .then(response => response.json()) 
                 .then(data => {
                     if (data.success) {
+                        // Display the success message
                         formWrapper.innerHTML = `
                             <div class="email-sent-success">
-                                <h2>Email Sent!</h2>
+                                <h2>Email Sent! ✅</h2>
                                 <p>Thank you for your message. We will get back to you shortly.</p>
                             </div>
                         `;
+
+                        // NEW: Wait for 5 seconds then restore the form
+                        setTimeout(function() {
+                            formWrapper.innerHTML = originalFormWrapperHTML;
+                            // The form is new, so we need to re-add the event listener to make it work again
+                            // The easiest way is to re-run the setup logic. We'll just reload the page for simplicity and robustness.
+                            // A more advanced approach would re-attach listeners, but this is simpler and safer.
+                            location.reload(); 
+                        }, 5000); // 5000 milliseconds = 5 seconds
+
                     } else {
+                        // If there's an error, re-enable the button and show the message
                         formMessage.innerHTML = 'Error: ' + data.message;
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = 'Send Message <i class="far fa-paper-plane"></i>';
                     }
                 })
                 .catch(error => {
                     console.error('Submission Error:', error);
                     formMessage.innerHTML = 'A network error occurred. Please try again later.';
+                    // Also re-enable the button on network error
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = 'Send Message <i class="far fa-paper-plane"></i>';
                 });
             });
         }
