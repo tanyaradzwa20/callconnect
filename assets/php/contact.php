@@ -36,8 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com'; //mail.callconnect.co.zw        // Your SMTP server (e.g., smtp.gmail.com or your host's SMTP server)
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'ngonimabasa1964@gmail.com';         // Your SMTP username (your full email address)
-            $mail->Password   = 'hhkdzrbbqlrjjwxd';     // Your SMTP password (or app-specific password for Gmail)
+            $mail->Username   = '';         // Your SMTP username (your full email address)
+            $mail->Password   = '';     // Your SMTP password (or app-specific password for Gmail)
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Use 'tls' or 'ssl' (PHPMailer::ENCRYPTION_STARTTLS)
             $mail->Port       = 587;                       // Port for SSL is 465, for TLS is 587
             // ===================================================================
