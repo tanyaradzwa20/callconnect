@@ -2,20 +2,16 @@
 <html lang="en">
 
 <head>
-    <!-- meta tags -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="Contact Call Connect - Zimbabwe's leading call center solutions provider">
+    <meta name="keywords" content="contact call center, customer support Zimbabwe, business solutions contact">
 
-    <!-- title -->
-    <title>Call Connect</title>
+    <title>Contact Us - Call Connect</title>
 
-    <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/logo/logoo.png">
 
-    <!-- css -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/all-fontawesome.min.css">
     <link rel="stylesheet" href="assets/css/flaticon.css">
@@ -23,22 +19,174 @@
     <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        /* Custom styling improvements */
+        .contact-area {
+            background-color: #f8f9fa;
+        }
+        
+        .contact-wrapper {
+            background: white;
+            border-radius: 10px;
+            padding: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-form-header h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .contact-form-header p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-control {
+            padding: 15px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #0066FF;
+            box-shadow: 0 0 0 0.2rem rgba(0, 102, 255, 0.25);
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info:hover {
+            background: #e9ecef;
+            transform: translateY(-5px);
+        }
+        
+        .contact-info-icon {
+            margin-right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .contact-info-color-1 .contact-info-icon {
+            background: #0066FF;
+        }
+        
+        .contact-info-color-2 .contact-info-icon {
+            background: #28a745;
+        }
+        
+        .contact-info-color-3 .contact-info-icon {
+            background: #dc3545;
+        }
+        
+        .contact-info-color-4 .contact-info-icon {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .contact-info-content h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .contact-info-content p, 
+        .contact-info-content a {
+            color: #666;
+            margin-bottom: 5px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-info-content a:hover {
+            color: #0066FF;
+        }
+        
+        .theme-btn {
+            background: #0066FF;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-btn:hover {
+            background: #0044CC;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .theme-btn:disabled {
+            background-color: #5a9cff;
+            cursor: not-allowed;
+        }
 
+        /* Style for the success message */
+        .email-sent-success {
+            text-align: center;
+            padding: 40px;
+            border: 2px dashed #28a745;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+        }
+        
+        .email-sent-success h2 {
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-wrapper {
+                padding: 30px 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-info-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
 </head>
 
 <body class="home-3">
 
-    <!-- preloader -->
     <div class="preloader">
         <div class="loader-ripple">
             <div></div>
             <div></div>
         </div>
     </div>
-    <!-- preloader end -->
-
-
-    <!-- header area -->
     <header class="header">
         <div class="main-navigation">
             <nav class="navbar navbar-expand-lg">
@@ -54,37 +202,28 @@
                     </div>
                     <div class="collapse navbar-collapse" id="main_nav">
                         <ul class="navbar-nav">
-                            <li class="nav-item ">
-                                <a class="nav-link active" href="index.html" data-bs-toggle="">Home</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Home</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                             <li class="nav-item"><a class="nav-link" href="service-single.html">Our Services</a></li>
-                            <li class="nav-item"><a class="nav-link" href="coming-soon.html">Blog</a></li>
-                            <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Account</a>
-                                <ul class="dropdown-menu fade-down">
-                                    <li><a class="dropdown-item" href="login.html">Login</a></li>
-                                    <li><a class="dropdown-item" href="register.html">Register</a></li>
-                                    <li><a class="dropdown-item" href="forgot-password.html">Forgot Password</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Blog
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="blog.html">Blog Posts</a></li>
+                                    <li><a class="dropdown-item" href="gallery.html">Gallery</a></li>
                                 </ul>
-                            </li> -->
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                            </li>
+                            <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
                         </ul>
-                        <!-- <div class="header-nav-right">
-                            <div class="header-btn">
-                                <a href="#" class="theme-btn">Get Quote <i class="far fa-arrow-right"></i></a>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </nav>
         </div>
     </header>
-    <!-- header area end -->
-
-
     <main class="main">
-        <!-- breadcrumb -->
         <div class="site-breadcrumb">
             <div class="container">
                 <h2 class="breadcrumb-title">Contact Us</h2>
@@ -99,48 +238,53 @@
             <div class="hero-right-circles"></div>
         </div>
 
-
-        <!-- contact area -->
         <div class="contact-area py-120">
             <div class="container">
                 <div class="contact-wrapper">
                     <div class="row">
                         <div class="col-lg-8 align-self-center">
                             <div class="contact-form">
-                                <div class="contact-form-header">
-                                    <h2>Get In Touch</h2>
-                                    <p>It is a long established fact that a reader will be distracted by the readable
-                                        content of a page randomised words which don't look even slightly when looking at its layout. </p>
+                                
+                                <div id="contact-form-wrapper">
+                                    <div class="contact-form-header">
+                                        <h2>Get In Touch</h2>
+                                        <p>We're here to help you elevate your customer experience. Reach out to us with any questions about our call center solutions, or to discuss how we can support your business growth.</p>
+                                    </div>
+                                    <form method="post" action="/callconnect/assets/php/contact.php" id="contact-form">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="tel" class="form-control" name="phone" placeholder="Your Phone Number (e.g., +263...)" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="subject" placeholder="Your Subject" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea name="message" cols="30" rows="5" class="form-control" placeholder="How can we help your business?" required></textarea>
+                                        </div>
+                                        <button type="submit" class="theme-btn">Send Message <i class="far fa-paper-plane"></i></button>
+                                        <div class="col-md-12 mt-3">
+                                            <div class="form-messege text-danger"></div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <form method="post" action="/ecall/assets/php/contact.php" id="contact-form">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="name"
-                                                    placeholder="Your Name" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" name="email"
-                                                    placeholder="Your Email" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="subject"
-                                            placeholder="Your Subject" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea name="message" cols="30" rows="5" class="form-control"
-                                            placeholder="Write Your Message"></textarea>
-                                    </div>
-                                    <button type="submit" class="theme-btn">Send
-                                        Message <i class="far fa-paper-plane"></i></button>
-                                    <div class="col-md-12 mt-3">
-                                        <div class="form-messege text-success"></div>
-                                    </div>
-                                </form>
+
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -151,8 +295,9 @@
                                     </div>
                                     <div class="contact-info-content">
                                         <h5>Office Address</h5>
-                                        <p>Block D 1st Floor,
-                                            Smatsatsa Office Park Borrowdale, Harare</p>
+                                        <p>Block D 1st Floor,<br>
+                                            Smatsatsa Office Park<br>
+                                            Borrowdale, Harare</p>
                                     </div>
                                 </div>
                                 <div class="contact-info contact-info-color-2">
@@ -201,15 +346,8 @@
                 </div>
             </div>
         </div>
-        <!-- end contact area -->
+        </main>
 
-
-        
-    </main>
-
-
-
-    <!-- footer area -->
     <footer class="footer-area">
         <div class="footer-widget">
             <div class="container">
@@ -253,26 +391,16 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- <div class="col-md-6 col-lg-3">
-                        <div class="footer-widget-box list">
-                            <h4 class="footer-widget-title">Quick Links</h4>
-                            <ul class="footer-list">
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="service-single.html">Services</a></li>
-                                <li><a href="blog-single.html">Our Blog</a></li>
-                            </ul>
-                        </div>
-                    </div> -->
                     <div class="col-md-6 col-lg-4">
                         <div class="footer-widget-box list">
                             <h4 class="footer-widget-title">Our Services</h4>
                             <ul class="footer-list">
-                                <li><a href="#">Call Center Management</a></li>
-                                <li><a href="#">Customer Relationship Management</a></li>
-                                <li><a href="#">Customer Management Training</a></li>
-                                <li><a href="#">Marketing Solutions</a></li>
-                                <li><a href="#">Digital Solutions</a></li>
-                                <li><a href="#">Industry Specific Solutions</a></li>
+                                <li><a href="service-single.html">Call Center Management</a></li>
+                                <li><a href="service1.html">Customer Relationship Management</a></li>
+                                <li><a href="services2.html">Customer Management Training</a></li>
+                                <li><a href="services3.html">Marketing Solutions</a></li>
+                                <li><a href="services4.html">Digital Solutions</a></li>
+                                <li><a href="services5.html">Industry Specific Solutions</a></li>
                             </ul>
                         </div>
                     </div>
@@ -282,23 +410,23 @@
                             <ul class="footer-contact">
                                 <li>
                                     <i class="far fa-phone"></i>
-                                        <div class="contact-info-content">
-                                            <h6 >Phone</h6>
-                                            <a href="tel:+2638677184916">
-                                                <p>+263 8677 184916</p>
-                                            </a>
-                                            <a href="tel:+263 77 295 7563">
-                                                <p>+263 77 295 7563</p>
-                                            </a>
-                                            <a href="tel:+263 77 228 7484">
-                                                <p>+263 788 230 585</p>
-                                            </a>
-                                        </div>
+                                    <div class="contact-info-content">
+                                        <h6>Phone</h6>
+                                        <a href="tel:+2638677184916">
+                                            <p>+263 8677 184916</p>
+                                        </a>
+                                        <a href="tel:+263 77 295 7563">
+                                            <p>+263 77 295 7563</p>
+                                        </a>
+                                        <a href="tel:+263 77 228 7484">
+                                            <p>+263 77 228 7484</p>
+                                        </a>
+                                    </div>
                                 </li>
                                 <li>
                                     <i class="far fa-map-marker-alt"></i>
                                     <div class="contact-info-content">
-                                        <h6 >Office Address</h6>
+                                        <h6>Office Address</h6>
                                         <p>Block D 1st Floor,
                                             Smatsatsa Office Park Borrowdale, Harare</p>
                                     </div>
@@ -306,7 +434,7 @@
                                 <li>
                                     <i class="far fa-envelope"></i>
                                     <div class="contact-info-content">
-                                        <h6 >Email</h6>
+                                        <h6>Email</h6>
                                         <a href="mailto:gary@callconnect.co.zw">
                                             <p>gary@callconnect.co.zw</p>
                                         </a>
@@ -330,23 +458,12 @@
                         </p>
                     </div>
                     <div class="col-md-6 align-self-center">
-                       
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- footer area end -->
-
-
-
-
-    <!-- scroll-top -->
     <a href="#" id="scroll-top"><i class="far fa-arrow-up-to-line"></i></a>
-    <!-- scroll-top end -->
-
-
-    <!-- js -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/modernizr.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
@@ -358,9 +475,72 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/counter-up.js"></script>
     <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/contact-form.js"></script>
+   <!-- <script src="assets/js/contact-form.js"></script> -->
     <script src="assets/js/main.js"></script>
 
-</body>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const contactForm = document.getElementById('contact-form');
+        
+        if (contactForm) {
+            const formWrapper = document.getElementById('contact-form-wrapper');
+            const formMessage = contactForm.querySelector('.form-messege');
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            
+            // Save the original HTML of the entire form section
+            const originalFormWrapperHTML = formWrapper.innerHTML;
+    
+            contactForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+    
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+
+                const formData = new FormData(contactForm);
+                const actionUrl = contactForm.getAttribute('action'); 
+                
+                fetch(actionUrl, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json()) 
+                .then(data => {
+                    if (data.success) {
+                        // Display the success message
+                        formWrapper.innerHTML = `
+                            <div class="email-sent-success">
+                                <h2>Email Sent! ✅</h2>
+                                <p>Thank you for your message. We will get back to you shortly.</p>
+                            </div>
+                        `;
+
+                        // NEW: Wait for 5 seconds then restore the form
+                        setTimeout(function() {
+                            formWrapper.innerHTML = originalFormWrapperHTML;
+                            // The form is new, so we need to re-add the event listener to make it work again
+                            // The easiest way is to re-run the setup logic. We'll just reload the page for simplicity and robustness.
+                            // A more advanced approach would re-attach listeners, but this is simpler and safer.
+                            location.reload(); 
+                        }, 5000); // 5000 milliseconds = 5 seconds
+
+                    } else {
+                        // If there's an error, re-enable the button and show the message
+                        formMessage.innerHTML = 'Error: ' + data.message;
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = 'Send Message <i class="far fa-paper-plane"></i>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Submission Error:', error);
+                    formMessage.innerHTML = 'A network error occurred. Please try again later.';
+                    // Also re-enable the button on network error
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = 'Send Message <i class="far fa-paper-plane"></i>';
+                });
+            });
+        }
+    });
+    </script>
+    </body>
 
 </html>
