@@ -1,34 +1,89 @@
-<?php 
+<?php
+// Import PHPMailer classes into the global namespace
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
- //contact form info
- $name=  $_POST['name'];
- $email=  $_POST['email'];
- $subject = $_POST['subject'];
- $contact_message = $_POST['message'];
+// 1. LOAD ENVIRONMENT VARIABLES FROM .env FILE (SECURE METHOD)
+// This requires the Composer autoloader
+require __DIR__ . '/../../vendor/autoload.php';
+// This points to your project's root folder to find the .env file
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
+$dotenv->load();
+// ---
 
+// Load PHPMailer files manually
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
 
- $message = "<b>Mail Sender Info:</b> </br>
-            <h5><b>Name:</b>".$name."</h5>
-            <h5><b>Email:</b>".$email."</h5>
-            </br>
-            <p>".$contact_message."</p>";
+// Set a default response for errors
+$response = ['success' => false, 'message' => 'An unknown error occurred.'];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // Sanitize user input - ADD PHONE NUMBER HERE
+    $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
+    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+    $phone = filter_var(trim($_POST['phone']), FILTER_SANITIZE_STRING); // ADDED PHONE NUMBER
+    $subject = filter_var(trim($_POST['subject']), FILTER_SANITIZE_STRING);
+    $message = filter_var(trim($_POST['message']), FILTER_SANITIZE_STRING);
+
+    // Validate input - UPDATE VALIDATION TO INCLUDE PHONE
+    if (empty($name) || empty($email) || empty($phone) || empty($subject) || empty($message)) {
+        $response['message'] = 'Please fill in all the required fields.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $response['message'] = 'Please enter a valid email address.';
+    } else {
+        
+        $mail = new PHPMailer(true);
+
+        try {
+            // ===================================================================
+            // 2. SMTP CONFIGURATION (READING SECURELY FROM .env) ✅
+            // ===================================================================
+            $mail->isSMTP();
+            $mail->Host       = $_ENV['SMTP_HOST'];      // Should be 'smtp.gmail.com' in your .env file
+            $mail->SMTPAuth   = true;
+            $mail->Username   = $_ENV['SMTP_USER'];      // Your full Gmail address
+            $mail->Password   = $_ENV['SMTP_PASS'];      // Your 16-digit Google App Password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port       = $_ENV['SMTP_PORT'];      // Should be 587
+            // ===================================================================
+
+            // RECIPIENTS
+            // The 'From' address should match your Username for best results
+            $mail->setFrom($_ENV['SMTP_USER'], 'CallConnect Website');
+
+            // Set the addresses where you want to RECEIVE the emails
+            //$mail->addAddress('shaneez@callconnect.co.zw', 'Shaneez');
+            $mail->addAddress('ngoni7596@gmail.com', 'Ngoni');
             
-            
- $to = "contact@example.com"; //Replace your real receiving email address
+            // Set the reply-to address to the user who filled the form
+            $mail->addReplyTo($email, $name);                         
 
- $header = "From:info@example.com \r\n"; //Replace with your real web master email
- $header .= "MIME-Version: 1.0\r\n";
- $header .= "Content-type: text/html\r\n";
- 
- $mail_send = mail ($to,$subject,$message,$header);
- 
-//  if( $mail_send == true ) {
-//     echo "Your message send successfully!.";
-//  }else {
-//     echo "Your message could not be send!.";
-//  }
+            // CONTENT
+            $mail->isHTML(false); // Set email format to plain text
+            $mail->Subject = 'New Website Contact: ' . $subject;
+            $mail->Body    = "You have received a new message from your website contact form.\n\n" .
+                           "Name: " . $name . "\n" .
+                           "Email: " . $email . "\n" .
+                           "Phone: " . $phone . "\n\n" .  // ADDED PHONE NUMBER HERE
+                           "Message:\n" . $message;
 
-echo "Your message send successfully!.";
+            $mail->send();
+            $response['success'] = true;
+            $response['message'] = 'Your message has been sent successfully!';
 
+        } catch (Exception $e) {
+            $response['message'] = "Oops! An error occurred and your message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+} else {
+    $response['message'] = 'Invalid request method.';
+}
 
+// Send the JSON response back to the JavaScript
+header('Content-Type: application/json');
+echo json_encode($response);
 ?>
