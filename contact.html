@@ -21,6 +21,52 @@
     <link rel="stylesheet" href="assets/css/style.css">
     
     <style>
+        /* Make logos bigger */
+        .navbar-brand img {
+            max-width: 200px;
+            height: auto;
+        }
+        
+        .footer-logo img { width: 250px !important;
+        }
+        
+        /* Change Send Message and Subscribe buttons to orange */
+        .contact-form .theme-btn,
+        .subscribe-form .theme-btn {
+            background: #f57f27 !important;
+        }
+        
+        .contact-form .theme-btn:hover,
+        .subscribe-form .theme-btn:hover {
+            background: #e06d1a !important;
+        }
+        
+        /* Responsive office address - prevent text breaking */
+        .contact-info-content p {
+            word-break: keep-all;
+            white-space: normal;
+            line-height: 1.8;
+        }
+        
+        @media (max-width: 767px) {
+            .navbar-brand img {
+                max-width: 150px;
+            }
+            
+            $1230px !important;
+            }
+            
+            .contact-info-content {
+                text-align: left;
+            }
+            
+            .contact-info-content p {
+                font-size: 14px;
+            }
+        }
+    </style>
+    
+    <style>
         /* Custom styling improvements */
         .contact-area {
             background-color: #f8f9fa;
@@ -192,7 +238,7 @@
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <a class="navbar-brand" href="index.html">
-                        <img src="assets/img/logo/CallConnectLogo2024E.jpg" alt="logo">
+                        <img src="assets/img/logo/CallConnectLogo2024E.jpg" alt="logo" loading="lazy">
                     </a>
                     <div class="mobile-menu-right">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -233,7 +279,7 @@
                 </ul>
             </div>
             <div class="hero-shape">
-                <img class="hero-shape-1" src="assets/img/shape/01.png" alt="">
+                <img class="hero-shape-1" src="assets/img/shape/01.png" alt="" loading="lazy">
             </div>
             <div class="hero-right-circles"></div>
         </div>
@@ -296,7 +342,7 @@
                                     <div class="contact-info-content">
                                         <h5>Office Address</h5>
                                         <p>Block D 1st Floor,<br>
-                                            Smatsatsa Office Park<br>
+                                            Smatsatsa Office Park,<br>
                                             Borrowdale, Harare</p>
                                     </div>
                                 </div>
@@ -379,7 +425,7 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="footer-widget-box about-us">
                             <a href="#" class="footer-logo">
-                                <img src="assets/img/logo/logoo.png" alt="">
+                                <img src="assets/img/logo/logoo.png" alt="" loading="lazy">
                             </a>
                             <p class="mb-3">
                                 Here is an opportunity for us to represent your business, maintaining and improving your reputation.
@@ -427,8 +473,9 @@
                                     <i class="far fa-map-marker-alt"></i>
                                     <div class="contact-info-content">
                                         <h6>Office Address</h6>
-                                        <p>Block D 1st Floor,
-                                            Smatsatsa Office Park Borrowdale, Harare</p>
+                                        <p>Block D 1st Floor,<br>
+                                            Smatsatsa Office Park,<br>
+                                            Borrowdale, Harare</p>
                                     </div>
                                 </li>
                                 <li>
@@ -465,18 +512,18 @@
     </footer>
     <a href="#" id="scroll-top"><i class="far fa-arrow-up-to-line"></i></a>
     <script src="assets/js/jquery-3.6.0.min.js"></script>
-    <script src="assets/js/modernizr.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/modernizr.min.js" defer></script>
+    <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+    <script src="assets/js/imagesloaded.pkgd.min.js" defer></script>
     <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js" defer></script>
     <script src="assets/js/jquery.appear.min.js"></script>
     <script src="assets/js/jquery.easing.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/counter-up.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-   <!-- <script src="assets/js/contact-form.js"></script> -->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/owl.carousel.min.js" defer></script>
+    <script src="assets/js/counter-up.js" defer></script>
+    <script src="assets/js/wow.min.js" defer></script>
+   <!-- <script src="assets/js/contact-form.js" defer></script> -->
+    <script src="assets/js/main.js" defer></script>
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -509,7 +556,7 @@
                         // Display the success message
                         formWrapper.innerHTML = `
                             <div class="email-sent-success">
-                                <h2>Email Sent! ✅</h2>
+                                <h2>Email Sent! ?</h2>
                                 <p>Thank you for your message. We will get back to you shortly.</p>
                             </div>
                         `;
