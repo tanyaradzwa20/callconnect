@@ -15,6 +15,10 @@
     <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="assets/img/logo/logoo.png">
 
+    <!-- preload critical resources -->
+    <link rel="preload" href="assets/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="assets/css/style.css" as="style">
+
     <!-- css -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/all-fontawesome.min.css">
@@ -45,9 +49,10 @@
         
         .gallery-item img {
             width: 100%;
-            height: 300px;
+            height: 250px;
             object-fit: cover;
             transition: transform 0.3s ease;
+            background: #f0f0f0;
         }
         
         .gallery-item:hover img {
@@ -59,7 +64,10 @@
         /* Make logos bigger */
         .navbar-brand img { max-width: 200px; height: auto; }
         .footer-logo img { width: 250px !important; }
-        @media (max-width: 767px) { .navbar-brand img { max-width: 150px; } $1230px !important; } }
+        @media (max-width: 767px) { 
+            .navbar-brand img { max-width: 150px; } 
+            .footer-logo img { width: 230px !important; } 
+        }
     </style>
 </head>
 
@@ -80,7 +88,7 @@
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <a class="navbar-brand" href="index.html">
-                        <img src="assets/img/logo/CallConnectLogo2024E.jpg" alt="logo">
+                        <img src="assets/img/logo/CallConnectLogo2024E.jpg" alt="logo" loading="lazy" width="200" height="80">
                     </a>
                     <div class="mobile-menu-right">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -123,7 +131,7 @@
                 </ul>
             </div>
             <div class="hero-shape">
-                <img class="hero-shape-1" src="assets/img/shape/01.png" alt="">
+                <img class="hero-shape-1" src="assets/img/shape/01.png" alt="" loading="lazy">
             </div>
             <div class="hero-right-circles"></div>
         </div>
@@ -134,62 +142,62 @@
                 <div class="row gallery-grid">
                     <!-- Image 1 -->
                     <div class="col-md-6 col-lg-4 gallery-item">
-                        <img src="assets/img/gallery/1.jpg" alt="Call Connect Team" loading="lazy" width="800" height="600">
+                        <img src="assets/img/gallery/1.jpg" alt="Call Connect Team" loading="lazy" width="600" height="450">
                     </div>
                     
                     <!-- Image 2 -->
                     <div class="col-md-6 col-lg-4 gallery-item">
-                        <img src="assets/img/gallery/2.jpg" alt="Customer Service Agents" loading="lazy" width="800" height="600">
+                        <img src="assets/img/gallery/2.jpg" alt="Customer Service Agents" loading="lazy" width="600" height="450">
                     </div>
                     
                     <!-- Image 3 -->
                     <div class="col-md-6 col-lg-4 gallery-item">
-                        <img src="assets/img/gallery/3.jpg" alt="Management Team" loading="lazy" width="800" height="600">
+                        <img src="assets/img/gallery/3.jpg" alt="Management Team" loading="lazy" width="600" height="450">
                     </div>
                     
                     <!-- Image 4 -->
                     <div class="col-md-6 col-lg-4 gallery-item">
-                        <img src="assets/img/gallery/4.jpg" alt="Modern Office" loading="lazy" width="800" height="600">
+                        <img src="assets/img/gallery/4.jpg" alt="Modern Office" loading="lazy" width="600" height="450">
                     </div>
                     
                     <!-- Image 5 -->
                     <div class="col-md-6 col-lg-4 gallery-item">
-                        <img src="assets/img/gallery/5.jpg" alt="Call Center Floor" loading="lazy" width="800" height="600">
+                        <img src="assets/img/gallery/5.jpg" alt="Call Center Floor" loading="lazy" width="600" height="450">
                     </div>
                     
                     <!-- Image 6 -->
                     <div class="col-md-6 col-lg-4 gallery-item">
-                        <img src="assets/img/gallery/6.jpg" alt="Technology Setup" loading="lazy" width="800" height="600">
+                        <img src="assets/img/gallery/6.jpg" alt="Technology Setup" loading="lazy" width="600" height="450">
                     </div>
                     
                     <!-- Image 7 -->
                     <div class="col-md-6 col-lg-4 gallery-item">
-                        <img src="assets/img/gallery/7.jpg" alt="Team Building" loading="lazy" width="800" height="600">
+                        <img src="assets/img/gallery/7.jpg" alt="Team Building" loading="lazy" width="600" height="450">
                     </div>
                     
                     <!-- Image 8 -->
                     <div class="col-md-6 col-lg-4 gallery-item">
-                        <img src="assets/img/gallery/8.jpg" alt="Company Celebration" loading="lazy" width="800" height="600">
+                        <img src="assets/img/gallery/8.jpg" alt="Company Celebration" loading="lazy" width="600" height="450">
                     </div>
                     
                     <!-- Image 9 -->
                     <div class="col-md-6 col-lg-4 gallery-item">
-                        <img src="assets/img/gallery/9.jpg" alt="Award Ceremony" loading="lazy" width="800" height="600">
+                        <img src="assets/img/gallery/9.jpg" alt="Award Ceremony" loading="lazy" width="600" height="450">
                     </div>
                     
                     <!-- Image 10 -->
                     <div class="col-md-6 col-lg-4 gallery-item">
-                        <img src="assets/img/gallery/10.jpg" alt="Training Session" loading="lazy" width="800" height="600">
+                        <img src="assets/img/gallery/10.jpg" alt="Training Session" loading="lazy" width="600" height="450">
                     </div>
                     
                     <!-- Image 11 -->
                     <div class="col-md-6 col-lg-4 gallery-item">
-                        <img src="assets/img/gallery/11.jpg" alt="Skills Workshop" loading="lazy" width="800" height="600">
+                        <img src="assets/img/gallery/11.jpg" alt="Skills Workshop" loading="lazy" width="600" height="450">
                     </div>
                     
                     <!-- Image 12 -->
                     <div class="col-md-6 col-lg-4 gallery-item">
-                        <img src="assets/img/gallery/12.jpg" alt="Client Training" loading="lazy" width="800" height="600">
+                        <img src="assets/img/gallery/12.jpg" alt="Client Training" loading="lazy" width="600" height="450">
                     </div>
                 </div>
             </div>
@@ -229,7 +237,7 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="footer-widget-box about-us">
                             <a href="#" class="footer-logo">
-                                <img src="assets/img/logo/logoo.png" alt="">
+                                <img src="assets/img/logo/logoo.png" alt="" loading="lazy" width="250" height="100">
                             </a>
                             <p class="mb-3">
                                 Here is an opportunity for us to represent your business, maintaining and improving your reputation.
