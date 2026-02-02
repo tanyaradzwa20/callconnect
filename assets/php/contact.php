@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Set the addresses where you want to RECEIVE the emails
             //$mail->addAddress('shaneez@callconnect.co.zw', 'Shaneez');
-            $mail->addAddress('ngoni7596@gmail.com', 'Ngoni');
+            $mail->addAddress('info@callconnect.co.zw', 'CallConnect');
             
             // Set the reply-to address to the user who filled the form
             $mail->addReplyTo($email, $name);                         
