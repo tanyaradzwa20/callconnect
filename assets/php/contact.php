@@ -40,15 +40,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         try {
             // ===================================================================
-            // 2. SMTP CONFIGURATION (READING SECURELY FROM .env) ✅
+            // 2. SMTP CONFIGURATION - USING SSL ON PORT 465
             // ===================================================================
             $mail->isSMTP();
-            $mail->Host       = $_ENV['SMTP_HOST'];      // Should be 'smtp.gmail.com' in your .env file
+            $mail->Host       = $_ENV['SMTP_HOST'];      // smtp.gmail.com
             $mail->SMTPAuth   = true;
             $mail->Username   = $_ENV['SMTP_USER'];      // Your full Gmail address
             $mail->Password   = $_ENV['SMTP_PASS'];      // Your 16-digit Google App Password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port       = $_ENV['SMTP_PORT'];      // Should be 587
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // SSL encryption for port 465
+            $mail->Port       = $_ENV['SMTP_PORT'];      // Should be 465
+            
+            // Enable verbose debug output (remove in production)
+            $mail->SMTPDebug = 0; // Set to 2 for detailed debugging
             // ===================================================================
 
             // RECIPIENTS
