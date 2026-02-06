@@ -4,13 +4,37 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-// 1. LOAD ENVIRONMENT VARIABLES FROM .env FILE (SECURE METHOD)
-// This requires the Composer autoloader
-require __DIR__ . '/../../vendor/autoload.php';
-// This points to your project's root folder to find the .env file
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
-$dotenv->load();
-// ---
+// Load environment variables from .env file (no vendor folder needed)
+function loadEnv($path) {
+    if (!file_exists($path)) {
+        return false;
+    }
+    
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) {
+            continue;
+        }
+        
+        list($name, $value) = explode('=', $line, 2);
+        $name = trim($name);
+        $value = trim($value);
+        
+        // Remove quotes if present
+        if (preg_match('/^"(.*)"$/', $value, $matches)) {
+            $value = $matches[1];
+        } elseif (preg_match("/^'(.*)'$/", $value, $matches)) {
+            $value = $matches[1];
+        }
+        
+        $_ENV[$name] = $value;
+        putenv("$name=$value");
+    }
+    return true;
+}
+
+// Load .env file from project root
+loadEnv(__DIR__ . '/../../.env');
 
 // Load PHPMailer files manually
 require 'PHPMailer/Exception.php';
@@ -40,18 +64,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         try {
             // ===================================================================
-            // 2. SMTP CONFIGURATION - USING SSL ON PORT 465
+            // 2. SMTP CONFIGURATION (READING SECURELY FROM .env) ✅
             // ===================================================================
             $mail->isSMTP();
-            $mail->Host       = $_ENV['SMTP_HOST'];      // smtp.gmail.com
+            $mail->Host       = $_ENV['SMTP_HOST'];      // Should be 'smtp.gmail.com' in your .env file
             $mail->SMTPAuth   = true;
             $mail->Username   = $_ENV['SMTP_USER'];      // Your full Gmail address
             $mail->Password   = $_ENV['SMTP_PASS'];      // Your 16-digit Google App Password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // SSL encryption for port 465
-            $mail->Port       = $_ENV['SMTP_PORT'];      // Should be 465
-            
-            // Enable verbose debug output (remove in production)
-            $mail->SMTPDebug = 0; // Set to 2 for detailed debugging
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port       = $_ENV['SMTP_PORT'];      // Should be 587
             // ===================================================================
 
             // RECIPIENTS
@@ -60,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Set the addresses where you want to RECEIVE the emails
             //$mail->addAddress('shaneez@callconnect.co.zw', 'Shaneez');
-            $mail->addAddress('info@callconnect.co.zw', 'CallConnect');
+            $mail->addAddress('ngonimabasa1964@gmail.com', 'CallConnect');
             
             // Set the reply-to address to the user who filled the form
             $mail->addReplyTo($email, $name);                         
